@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme{
+  --text-xl: clamp(0.96rem, calc(0.6rem + 1.8vw), 2.4rem);
+  --text-lg: clamp(0.75rem, calc(0.48rem + 1.2vw), 1.5rem);
+  --text-md: clamp(0.6rem, calc(0.36rem + 0.72vw), 1.05rem);
+  --text-sm: clamp(0.525rem, calc(0.36rem + 0.48vw), 0.675rem);
+
+  --color-primary: oklch(62.3% 0.214 259.815);
+  --color-Hprimary: oklch(54.6% 0.245 262.881);
+  --color-secondary: oklch(55.8% 0.288 302.321);
+  --color-Hsecondary: oklch(55.8% 0.288 302.321);
+  --animate-appear: appear linear;
+}
+
+*{
+  font-family: inter, sans;
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+}
+
+.formContainer{
+  @apply flex flex-col gap-1 md:gap-2 md:w-9/10 w-full max-w-[800px] mx-auto pt-4 pb-16 md:px-12 px-6 bg-white rounded-4xl shadow-lg border-2 border-neutral-300 mt-20;
+}
+
+.courseContainer{
+  @apply flex flex-col gap-10 md:w-9/10 w-full max-w-[800px] mx-auto pt-12 pb-16 px-6 bg-white rounded-4xl shadow-lg border-2 border-neutral-300 mt-20;
+}
+
+.buttonBlue{
+  @apply text-white bg-primary hover:bg-Hprimary py-2 px-6 rounded-xl text-md cursor-pointer font-medium;
+}
+
+.buttonGrey{
+  @apply bg-[#F0F2F5] hover:bg-[#e8e8e8] py-2 px-6 rounded-xl text-md cursor-pointer font-medium;
+}
+
+.buttonGreen{
+  @apply bg-green-400 hover:bg-green-500 text-white py-2 px-6 rounded-xl text-md cursor-pointer font-medium;
+}
+
+.inputBox{
+  @apply border-2 border-neutral-300 rounded-xl md:px-6 px-4 py-3 text-md w-full mb-2;
+}
+
+.label{
+  @apply text-md font-medium;
+}
+
+.featureCard{
+  @apply flex flex-col items-start w-50 p-4 border-2  rounded-lg hover:transform hover:scale-110 transition-transform duration-300 hover:border-Hprimary border-neutral-500 cursor-pointer;
+}
+
+.faqCard{
+  @apply rounded-2xl border-1 border-neutral-400 p-3 w-1/1  hover:transform hover:scale-101 transition-transform duration-300 hover:border-Hprimary;
+}
+
+.error{
+  @apply mt-2 p-2 text-red-400 font-medium bg-red-200 rounded-lg w-full text-center;
+}
+
+.textHover{
+  @apply cursor-pointer hover:text-Hprimary hover:underline decoration-Hprimary transition-colors duration-300;
+}
+
+.textLinear{
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.animation {
+  @apply animate-appear [animation-timeline:view()] [animation-range:entry_0%_cover_40%];
+}
+
+
