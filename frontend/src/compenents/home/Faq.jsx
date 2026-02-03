@@ -19,7 +19,7 @@ export default function Faq(){
                 <div className="faqCard animation">
                     <div className="flex items-center justify-between px-4 mb-2 gap-auto hover:cursor-pointer" onClick={() => setIsOpen2((prev) => !prev)}>
                         <p className="text-sm font-medium">What resources are available to students?</p>
-                        <img src="public\icons\flech.svg" alt="" className={`w-5 h-5 ${(isOpen2 === true) && "rotate-180"}`}/>
+                        <img src="icons\flech.svg" alt="" className={`w-5 h-5 ${(isOpen2 === true) && "rotate-180"}`}/>
                     </div>
                     <p className={isOpen2 === false ? "hidden" : "text-sm text-neutral-500 px-4"}>
                         Students have access to all enrolled courses, interactive quizzes, lesson materials, and teacher feedback—all organized in one easy-to-use dashboard.
@@ -28,7 +28,7 @@ export default function Faq(){
                 <div className="faqCard animation">
                     <div className="flex items-center justify-between px-4 mb-2 gap-auto hover:cursor-pointer" onClick={() => setIsOpen3((prev) => !prev)}>
                         <p className="text-sm font-medium">How can I contact support?</p>
-                        <img src="public\icons\flech.svg" alt="" className={`w-5 h-5 ${(isOpen3 === true) && "rotate-180"}`}/>
+                        <img src="icons\flech.svg" alt="" className={`w-5 h-5 ${(isOpen3 === true) && "rotate-180"}`}/>
                     </div>
                     <p className={isOpen3 === false ? "hidden" : "text-sm text-neutral-500 px-4"}>
                         You can contact our support team through the “Help” section in your dashboard or by emailing us at support@betaeducation.com . We’ll respond as soon as possible to assist you.

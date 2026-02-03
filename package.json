@@ -1,0 +1,34 @@
+{
+  "name": "beta_academy-for-deployment",
+  "version": "1.0.0",
+  "description": "A modern, full-stack e-learning platform built with React, Node.js, Express, and MongoDB. Beta Academy provides a comprehensive online learning experience with course management, student enrollment, interactive quizzes, and progress tracking.",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "build": "npm install --prefix frontend && npm install --prefix backend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayoubbenam07/Beta_Academy.git"
+  },
+  "keywords": [
+    "e-learning",
+    "education",
+    "react",
+    "nodejs",
+    "mongodb",
+    "express",
+    "vite"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ayoubbenam07/Beta_Academy/issues"
+  },
+  "homepage": "https://github.com/ayoubbenam07/Beta_Academy#readme"
+}

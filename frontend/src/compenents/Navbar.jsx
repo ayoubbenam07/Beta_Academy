@@ -15,7 +15,7 @@ export default function Navbar({ number = 1 }) {
     return (
         <nav className="flex justify-between items-center px-5 md:px-20 py-2 md:py-3 border-b border-neutral-300 relative">
             <Link to="/">
-                <img src="public/icons/logo.svg" alt="logo" className="w-20 md:w-24" />
+                <img src="icons/logo.svg" alt="logo" className="w-20 md:w-24" />
             </Link>
 
             {/* MOBILE VIEW (below md) */}

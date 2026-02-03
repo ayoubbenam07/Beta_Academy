@@ -13,6 +13,5 @@ const StudentSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-StudentSchema.index({ email: 1 });
 
 export default mongoose.model('Student', StudentSchema);

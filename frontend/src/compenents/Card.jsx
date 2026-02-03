@@ -43,8 +43,8 @@ export default function Card({ course }) {
                             key={num}
                             src={
                                 averageRating >= num
-                                    ? "/public/icons/blackStar.svg"
-                                    : "/public/icons/whiteStar.svg"
+                                    ? "icons/blackStar.svg"
+                                    : "icons/whiteStar.svg"
                             }
                             alt="star"
                             className="w-6"
