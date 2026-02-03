@@ -8,7 +8,7 @@ export default function CoursesSection(){
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/course');
+                const response = await fetch('/api/course');
                 if (!response.ok) {
                     throw new Error('Failed to fetch courses');
                 }
