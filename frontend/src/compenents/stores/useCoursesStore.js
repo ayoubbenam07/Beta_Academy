@@ -16,7 +16,7 @@ export const useCoursesStore = create((set, get) => ({
 
     registerStudent: async (studentData) => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(studentData)
@@ -42,7 +42,7 @@ export const useCoursesStore = create((set, get) => ({
 
     loggedStudent: async (credentials) => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(credentials)
@@ -87,7 +87,7 @@ export const useCoursesStore = create((set, get) => ({
         if (!student || !student._id) return { success: false, message: "User not logged in" };
 
         try {
-            const response = await fetch('http://localhost:5000/api/enrollment', {
+            const response = await fetch('/api/enrollment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ export const useCoursesStore = create((set, get) => ({
             const student = state.student._id ? state.student : JSON.parse(localStorage.getItem('student'));
 
             // 1. Fetch Courses
-            const response = await fetch('http://localhost:5000/api/course');
+            const response = await fetch('/api/course');
             if (!response.ok) throw new Error('Failed to fetch courses');
             const data = await response.json();
 
@@ -149,7 +149,7 @@ export const useCoursesStore = create((set, get) => ({
             let enrolledCourseIds = new Set();
             if (student && student._id) {
                 try {
-                    const enrollmentResponse = await fetch(`http://localhost:5000/api/enrollment/student/${student._id}`);
+                    const enrollmentResponse = await fetch(`/api/enrollment/student/${student._id}`);
                     if (enrollmentResponse.ok) {
                         const enrollments = await enrollmentResponse.json();
                         enrollments.forEach(e => enrolledCourseIds.add(e.courseId._id || e.courseId));
@@ -227,7 +227,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     fetchCourseById: async (courseId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/course/${courseId}`);
+            const response = await fetch(`/api/course/${courseId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch course');
             }
@@ -248,7 +248,7 @@ export const useCoursesStore = create((set, get) => ({
             });
 
             // Fetch lessons for this course
-            const lessonsResponse = await fetch(`http://localhost:5000/api/lesson/course/${courseId}`);
+            const lessonsResponse = await fetch(`/api/lesson/course/${courseId}`);
             let lessons = [];
             if (lessonsResponse.ok) {
                 const lessonsData = await lessonsResponse.json();
@@ -329,7 +329,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     fetchLessonsByCourse: async (courseId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/lesson/course/${courseId}`);
+            const response = await fetch(`/api/lesson/course/${courseId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch lessons');
             }
@@ -394,7 +394,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     fetchQuizByLesson: async (lessonId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/quiz/lesson/${lessonId}`);
+            const response = await fetch(`/api/quiz/lesson/${lessonId}`);
             if (!response.ok) {
                 // If quiz not found, return empty array instead of throwing
                 if (response.status === 404) {
@@ -425,7 +425,7 @@ export const useCoursesStore = create((set, get) => ({
     addCourse: async (courseData) => {
         try {
             // 1. Create Expert first
-            const expertResponse = await fetch('http://localhost:5000/api/expert', {
+            const expertResponse = await fetch('/api/expert', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(courseData.expertProfile)
@@ -450,7 +450,7 @@ export const useCoursesStore = create((set, get) => ({
                 }
             };
 
-            const courseResponse = await fetch('http://localhost:5000/api/course', {
+            const courseResponse = await fetch('/api/course', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newCoursePayload)
@@ -482,7 +482,7 @@ export const useCoursesStore = create((set, get) => ({
 
             if (!expertId) {
                 // Create new if generic
-                const expertResponse = await fetch('http://localhost:5000/api/expert', {
+                const expertResponse = await fetch('/api/expert', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(courseData.expertProfile)
@@ -492,7 +492,7 @@ export const useCoursesStore = create((set, get) => ({
                 expertId = expert._id;
             } else {
                 // Update existing expert
-                await fetch(`http://localhost:5000/api/expert/${expertId}`, {
+                await fetch(`/api/expert/${expertId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(courseData.expertProfile)
@@ -515,7 +515,7 @@ export const useCoursesStore = create((set, get) => ({
                 }
             };
 
-            const courseResponse = await fetch(`http://localhost:5000/api/course/${courseId}`, {
+            const courseResponse = await fetch(`/api/course/${courseId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updateCoursePayload)
@@ -533,7 +533,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     fetchEnrollment: async (studentId, courseId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/enrollment/student/${studentId}`);
+            const response = await fetch(`/api/enrollment/student/${studentId}`);
             if (response.ok) {
                 const enrollments = await response.json();
                 const enrollment = enrollments.find(e =>
@@ -549,7 +549,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     saveQuizAttempt: async (enrollmentId, attemptData) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/enrollment/${enrollmentId}/quiz-attempt`, {
+            const response = await fetch(`/api/enrollment/${enrollmentId}/quiz-attempt`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(attemptData)
@@ -568,7 +568,7 @@ export const useCoursesStore = create((set, get) => ({
     },
     deleteCourse: async (courseId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/course/${courseId}`, {
+            const response = await fetch(`/api/course/${courseId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             });
